@@ -52,7 +52,7 @@ module MicrosoftGraph
             ## 
             def get_field_deserializers()
                 return {
-                    "@odata.count" => lambda {|n| @odata_count = n.get_object_value(lambda {|pn| Int64.create_from_discriminator_value(pn) }) },
+                    "@odata.count" => lambda {|n| @odata_count = n.get_number_value() },
                     "@odata.nextLink" => lambda {|n| @odata_next_link = n.get_string_value() },
                 }
             end
