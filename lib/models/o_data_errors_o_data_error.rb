@@ -42,7 +42,7 @@ module MicrosoftGraph
             ## 
             def self.create_from_discriminator_value(parse_node)
                 raise StandardError, 'parse_node cannot be null' if parse_node.nil?
-                return ODataErrorsODataError.new(parse_node.current_node)
+                return ODataErrorsODataError.new(additional_data: parse_node.current_node)
             end
             ## 
             ## Gets the error property value. The error property
