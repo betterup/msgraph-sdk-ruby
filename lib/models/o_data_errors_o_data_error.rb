@@ -31,9 +31,9 @@ module MicrosoftGraph
             ## Instantiates a new ODataErrorsODataError and sets the default values.
             ## @return a void
             ## 
-            def initialize()
+            def initialize(additional_data: Hash.new)
                 super
-                @additional_data = Hash.new
+                @additional_data = additional_data
             end
             ## 
             ## Creates a new instance of the appropriate class based on discriminator value
@@ -42,7 +42,7 @@ module MicrosoftGraph
             ## 
             def self.create_from_discriminator_value(parse_node)
                 raise StandardError, 'parse_node cannot be null' if parse_node.nil?
-                return ODataErrorsODataError.new
+                return ODataErrorsODataError.new(parse_node.get_object_value)
             end
             ## 
             ## Gets the error property value. The error property
